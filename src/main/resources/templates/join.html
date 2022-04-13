@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>Instagram</title>
+    <link href="/style/common.css" rel="stylesheet" type="text/css" />
+    <link href="/style/join.css" rel="stylesheet" type="text/css" />
+    <!-- favicon -->
+    <link rel="icon" href="img/favicon.png">
+    <link rel="instagram-icon" href="img/favicon.png">
+</head>
+<body>
+<div class="container">
+    <form action="/join" name="frm" method="post" class="frm">
+    <img class="logo_instagram" src="img/logo_text.png" alt="instagram_logo">
+    <input type="text" class="input_login" name="email" id="userEmail" placeholder="이메일">
+    <input type="password" class="input_login" name="password" id="userPW" placeholder="비밀번호">
+    <input type="text" class="input_login" name="name" id="userName" placeholder="사용자 이름">
+    <input type="text" class="input_login" name="phone" id="userPhone" placeholder="전화번호">
+    <a href="#none"><button id="btn_join" disabled>회원가입</button></a>
+    </form>
+    <span class="button_forgot"><a href="/login">계정이 있으신가요?</a></span>
+</div>
+<script src="js/join.js"></script>
+</body>
+</html>
