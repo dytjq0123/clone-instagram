@@ -1,32 +1,18 @@
-const idInput = document.getElementById('userID');
-const pwInput = document.getElementById('userPW');
+const idInput = document.getElementById('username');
+const pwInput = document.getElementById('password');
+const loginInput = document.getElementsByClassName('container')[0];
 const loginBtn = document.getElementById('btn_login');
-//const linkToMain = document.getElementsByTagName('a')[0];
 
-idInput.addEventListener('keyup', function(event) {
-    if (idInput.value && pwInput.value) {
-        loginBtn.disabled = false;
-//        linkToMain.href = "file:///Users/MiaJLee/Desktop/WeCode/westagram/main.html";
-    }
-    else {
-        loginBtn.disabled = true;
-//        linkToMain.href = "#none";
-    }
-})
+function idCheck() {
+    var hasAt = idInput.value.indexOf('@');
+    return hasAt !== -1 ? true : false;
+}
 
-pwInput.addEventListener('keyup', function(event) {
-    if (idInput.value && pwInput.value) {
-        loginBtn.disabled = false;
-//        linkToMain.href = "file:///Users/MiaJLee/Desktop/WeCode/westagram/main.html";
-    }
-    else {
-        loginBtn.disabled = true;
-//        linkToMain.href = "#none";
-    }
-})
+function pwCheck() {
+    return pwInput.value.length >= 5 ? true : false;
+}
 
-document.addEventListener('keyup', function(event) {
-    if (event.keyCode === 13) {
-        document.getElementById("btn_login").click();
-    }
+loginInput.addEventListener('keyup', function(event) {
+    const completedInput = (idCheck() && pwCheck());
+    loginBtn.disabled = completedInput ? false : true;
 })

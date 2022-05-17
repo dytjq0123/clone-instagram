@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Instagram</title>
+    <link href="/style/signup.css" rel="stylesheet" type="text/css" />
+    <link href="/style/login.css" rel="stylesheet" type="text/css" />
+
+    <!-- favicon -->
+    <link rel="icon" href="/img/favicon.png">
+    <link rel="instagram-icon" href="/img/favicon.png">
+
+</head>
+<body>
+<div class="container">
+    <img class="logo_instagram" src="/img/logo_text.png" alt="instagram_logo">
+    <form method="post" id="signUpForm" name="signUpForm" onsubmit="return signUp();">
+        <input type="email" class="input_signup" name="email" id="email" placeholder="이메일 주소" required="required"  maxlength="30" th:value="${reject_email}" />
+        <input type="password" class="input_signup" name="password" id="password" placeholder="비밀번호" required="required" th:value="${reject_password}" />
+        <input type="password" class="input_signup" name="passwordCheck" id="passwordCheck" placeholder="비밀번호 확인" required="required" th:value="${reject_password}" />
+        <input type="text" class="input_signup" name="phone" id="phone" placeholder="전화번호" required="required" th:value="${reject_phone}" />
+        <input type="text" class="input_signup" name="name" id="name" placeholder="성명" required="required" th:value="${reject_name}" />
+        <button id="btn_signup" disabled> 가입 </button>
+    </form>
+    <span class="signup_input_check" th:if="${param.error}" > 이메일 계정이 이미 존재합니다. </span>
+
+    <a href="/login" class="button_login">계정이 있으신가요?  로그인</a>
+</div>
+<div class="signup_valid">
+<span class="signup_input_check" th:if="${not #strings.isEmpty(valid_email)}" th:text="${valid_email}"> 이메일 검증 </span><br>
+<span class="signup_input_check" th:if="${not #strings.isEmpty(valid_password)}" th:text="${valid_password}"> 패스워드 검증 </span><br>
+<span class="signup_input_check" th:if="${not #strings.isEmpty(valid_phone)}" th:text="${valid_phone}"> 전화번호 검증 </span><br>
+<span class="signup_input_check" th:if="${not #strings.isEmpty(valid_name)}" th:text=""${valid_name}> 이름 검증 </span>
+</div>
+<script src="/js/signup.js"></script>
+</body>
+</html>
