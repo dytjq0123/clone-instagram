@@ -2,6 +2,7 @@ package com.clone.instagram.config.auth;
 
 import com.clone.instagram.entity.User;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -13,6 +14,7 @@ import java.util.Map;
 
 @Getter
 @Setter
+@NoArgsConstructor
 public class PrincipalDetails implements UserDetails, OAuth2User {
 
     private User user;
