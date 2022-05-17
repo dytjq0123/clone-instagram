@@ -14,7 +14,7 @@
                     <form id="userProfileImageForm">
                         <input type="file" name="profileImageFile" style="display: none;" id="userProfileImageInput" />
                     </form>
-                    <img class="profile-image" th:src="@{${'/profile_imgs/' + userProfileDto.user.profileImgUrl}}" onerror="this.src='/img/default_profile.png';"/>
+                    <img class="profile-image" th:src="@{${'/profile_img/' + userProfileDto.user.profileImgUrl}}" onerror="this.src='/img/default_profile.png';"/>
 <!--                    <img class="profile-image" src="/profile_img/test.png" onerror="this.src='/img/default_profile.png';"/>-->
                 </div>
             </div>

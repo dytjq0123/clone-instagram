@@ -12,7 +12,7 @@
             <!--프로필셋팅 아이디영역-->
             <div class="content-item__01">
                 <div class="item__img">
-                    <img th:src="@{${#authentication.getPrincipal().getUser().getProfileImgUrl()}}" onerror="this.src='/img/default_profile.png';"/>
+                    <img th:src="@{${'/profile_img/' + #authentication.getPrincipal().getUser().getProfileImgUrl()}}" onerror="this.src='/img/default_profile.png';"/>
                 </div>
                 <div class="item__username">
                     <h2 th:text="${#authentication.getPrincipal().getUser().getName()}" ></h2>
@@ -44,7 +44,7 @@
                 <div class="content-item__04">
                     <div class="item__title">패스워드</div>
                     <div class="item__input">
-                        <input class="input_update" type="password" name="password" id="password" placeholder="패스워드" required="required"/>
+                        <input class="input_update" type="password" name="password" id="password" placeholder="패스워드" th:value="${#authentication.getPrincipal().getUser().getPassword()}" required="required"/>
                     </div>
                 </div>
                 <div class="content-item__05">

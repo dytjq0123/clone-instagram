@@ -56,7 +56,7 @@ function followingInfoModalOpen(profileId) {
 function getfollowModalItem(follow) {
     let item = `<div class="subscribe__item" id="subscribeModalItem-${follow.id}">
 	<div class="subscribe__img">
-		<a href="/user/profile/${follow.id}" ><img src="/profileImgFiles/${follow.profileImgUrl}" onerror="this.src='/img/default_profile.png';" /></a>
+		<a href="/user/profile/${follow.id}" ><img src="/profile_img/${follow.profileImgUrl}" onerror="this.src='/img/default_profile.png';" /></a>
 	</div>
 	<div class="subscribe__text">
 		<h2>${follow.name}</h2>
@@ -121,7 +121,7 @@ function postPopup(postId, obj) {
 function getPostModalInfo(postInfoDto) {
     let item = `
     <div class="subscribe-header">
-            <a href="/user/profile/${postInfoDto.postUploader.id}"><img class="post-img-profile pic" src="/profileImgFiles/${postInfoDto.postUploader.profileImgUrl}" onerror="this.src='/img/default_profile.png'""></a>
+            <a href="/user/profile/${postInfoDto.postUploader.id}"><img class="post-img-profile pic" src="/profile_img/${postInfoDto.postUploader.profileImgUrl}" onerror="this.src='/img/default_profile.png'""></a>
             <span>${postInfoDto.postUploader.name}</span> `;
     item += `<button class="exit" onclick="modalClose()"><i class="fas fa-times"></i></button>`
     if(postInfoDto.uploader) {

@@ -26,7 +26,7 @@ function getStoryItem(post) {
         <article>
             <header>
                 <div class="profile-of-article">
-                    <a href="/user/profile/${post.user.id}"><img class="img-profile pic" src="/profileImgFiles/${post.user.profileImgUrl}" onerror="this.src='/img/default_profile.png'""></a>
+                    <a href="/user/profile/${post.user.id}"><img class="img-profile pic" src="/profile_img/${post.user.profileImgUrl}" onerror="this.src='/img/default_profile.png'""></a>
                     <span class="userID main-id point-span" >${post.user.name}</span>
                 </div>
             </header>

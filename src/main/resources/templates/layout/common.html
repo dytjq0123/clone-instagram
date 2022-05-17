@@ -49,7 +49,8 @@
 <!--                </a>-->
 <!--            </div>-->
                 <a th:href="@{/user/profile/{id} (id=${#authentication.getPrincipal().getUser().getId()})}" >
-                    <img class="pic" th:src="@{${'/profile_imgs/' + #authentication.getPrincipal().getUser().getProfileImgUrl}}" onerror="this.src='/img/default_profile.png';">
+<!--                    <img class="pic" th:src="@{${'/profile_img/' + #authentication.getPrincipal().getUser().getProfileImgUrl}}" onerror="this.src='/img/default_profile.png';">-->
+                    <img class="pic" th:src="@{${'/profile_img/' + #authentication.getPrincipal().getUser().getProfileImgUrl}}" onerror="this.src='/img/default_profile.png';">
                 </a>
         </div>
     </div>

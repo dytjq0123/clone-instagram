@@ -20,7 +20,7 @@
         <div class="myProfile">
 <!--            <a href="#" th:href="@{/user/profile/{id} (id=${#authentication.getPrincipal().getUser().getId()})}" >-->
             <a href="#" th:href="@{/user/profile/{id} (id=${#authentication.getPrincipal().getUser().getId()})}" >
-                <img class="pic" th:src="@{${'/profile_imgs/' + #authentication.getPrincipal().getUser().getProfileImgUrl}}" onerror="this.src='/img/default_profile.png'; "/>
+                <img class="pic" th:src="@{${'/profile_img/' + #authentication.getPrincipal().getUser().getProfileImgUrl}}" onerror="this.src='/img/default_profile.png'; "/>
             </a>
             <div>
                 <span class="userID point-span" th:text="${#authentication.getPrincipal().getUser().getName()}"></span>

@@ -65,7 +65,7 @@ function modalClose() {
 function getPostModalInfo(postInfoDto) {
     let item = `
     <div class="subscribe-header">
-            <a href="/user/profile/${postInfoDto.postUploader.id}"><img class="post-img-profile pic" src="/profileImgFiles/${postInfoDto.postUploader.profileImgUrl}" onerror="this.src='/img/default_profile.png'""></a>
+            <a href="/user/profile/${postInfoDto.postUploader.id}"><img class="post-img-profile pic" src="/profile_img/${postInfoDto.postUploader.profileImgUrl}" onerror="this.src='/img/default_profile.png'""></a>
             <span>${postInfoDto.postUploader.name}</span> `;
     item += `<button class="exit" onclick="modalClose()"><i class="fas fa-times"></i></button>`
     if(postInfoDto.uploader) {
