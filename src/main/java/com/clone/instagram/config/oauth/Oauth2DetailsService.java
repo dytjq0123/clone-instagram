@@ -36,6 +36,7 @@ public class Oauth2DetailsService extends DefaultOAuth2UserService {
                     .password(password)
                     .phone(null)
                     .name(name)
+                    .profileImgUrl("/img/default_profile.png")
                     .build();
             return new PrincipalDetails(userRepository.save(user), user_map); //oauth2로 로그인 됐는지 구분할 수 있음.
         } else { //이미 회원가입 되어있음
