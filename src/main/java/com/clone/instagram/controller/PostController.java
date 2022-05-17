@@ -4,11 +4,12 @@ import com.clone.instagram.config.auth.PrincipalDetails;
 import com.clone.instagram.dto.post.PostDto;
 import com.clone.instagram.dto.post.PostUpdateDto;
 import com.clone.instagram.dto.post.PostUploadDto;
-import com.clone.instagram.entity.User;
 import com.clone.instagram.exception.CustomValidationException;
 import com.clone.instagram.service.PostService;
 import lombok.RequiredArgsConstructor;
+import org.apache.commons.io.FilenameUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -18,6 +19,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+
+import javax.servlet.http.HttpServletResponse;
+import java.io.*;
 
 @Controller
 @RequiredArgsConstructor
@@ -89,6 +93,84 @@ public class PostController {
     @GetMapping("/post/popular")
     public String popular() {
         return "post/popular";
+    }
+
+    @Value("${post.path}")
+    private String postUploadFolder;
+
+    @GetMapping("/upload/{postUrl}")
+    public void postImg(@PathVariable("postUrl") String postUrl, HttpServletResponse response) throws IOException {
+
+        String filePath = postUploadFolder + postUrl;
+
+        File file = new File(filePath);
+        if(!file.isFile()){
+            response.setContentType("text/html; charset=UTF-8");
+            PrintWriter out = response.getWriter();
+            out.write("<script type='text/javascript'>alert('조회된 정보가 없습니다.'); self.close();</script>");
+            out.flush();
+            return;
+        }
+
+        FileInputStream fis = null;
+        new FileInputStream(file);
+
+        BufferedInputStream in = null;
+        ByteArrayOutputStream bStream = null;
+        try {
+            fis = new FileInputStream(file);
+            in = new BufferedInputStream(fis);
+            bStream = new ByteArrayOutputStream();
+            int imgByte;
+            while ((imgByte = in.read()) != -1) {
+                bStream.write(imgByte);
+            }
+
+            String type = "";
+            String ext = FilenameUtils.getExtension(file.getName());
+            if (ext != null && !"".equals(ext)) {
+                if ("jpg".equals(ext.toLowerCase())) {
+                    type = "image/jpeg";
+                } else {
+                    type = "image/" + ext.toLowerCase();
+                }
+
+            }
+
+            response.setHeader("Content-Type", type);
+            response.setContentLength(bStream.size());
+
+            bStream.writeTo(response.getOutputStream());
+
+            response.getOutputStream().flush();
+            response.getOutputStream().close();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            if (bStream != null) {
+                try {
+                    bStream.close();
+                } catch (Exception est) {
+                    est.printStackTrace();
+                }
+            }
+            if (in != null) {
+                try {
+                    in.close();
+                } catch (Exception ei) {
+                    ei.printStackTrace();
+                }
+            }
+            if (fis != null) {
+                try {
+                    fis.close();
+                } catch (Exception efis) {
+                    efis.printStackTrace();
+                }
+            }
+        }
+
     }
 
 
