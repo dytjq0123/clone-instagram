@@ -99,7 +99,7 @@ public class PostService {
                 likeState,
                 upload,
                 post.getPostImgUrl(),
-                post.getCommentList());
+                commentRepository.findByPostId(post.getId()));
 
         return postInfoDto;
     }
